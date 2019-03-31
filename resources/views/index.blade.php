@@ -73,7 +73,7 @@
                 <section>
                     <div class="content">
                         <header>
-                            <a target="_blank" href="https://github.com/Ameer97/shopping" class="icon fa-github"><span class="label">Icon</span></a>
+                            <a target="_blank" href="https://github.com/Ameer97/shop" class="icon fa-github"><span class="label">Icon</span></a>
                             <h3>Full Project on Github</h3>
                         </header>
 
@@ -100,7 +100,7 @@
 @endsection
 
 @section('script')
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <script>

@@ -51,9 +51,9 @@
                 <h4>Magna sed ipsum</h4>
                 <ul class="plain">
                     <li><a href="#"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
-                    <li><a href="#"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
+                    <li><a target="_blank" href="https://facebook.com/ameerwisam.alissa"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
                     <li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
-                    <li><a href="#"><i class="icon fa-github">&nbsp;</i>Github</a></li>
+                    <li><a target="_blank" href="https://github.com/Ameer97"><i class="icon fa-github">&nbsp;</i>Github</a></li>
                 </ul>
             </section>
         </div>
