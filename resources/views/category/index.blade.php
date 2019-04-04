@@ -1,13 +1,59 @@
 @extends('layouts.masterOwner')
 @section('content')
+
+
+    <style>
+        /*this part for table mobile mode that can't add in external file (responsiveTable)
+         or if it can, should duplicate many files of css*/
+
+        @media only screen and (max-width: 760px),
+        (min-device-width: 768px) and (max-device-width: 1024px) {
+
+            td:nth-of-type(1):before {
+                content: "#";
+            }
+
+            td:nth-of-type(2):before {
+                content: "Name";
+            }
+
+            td:nth-of-type(3):before {
+                content: "Description";
+            }
+
+            td:nth-of-type(4):before {
+                content: "Actions";
+            }
+
+            tr {
+                padding-bottom: 20%;
+            }
+        }
+
+    </style>
+
+
     <!-- Main -->
     <section id="main" class="wrapper">
         <div class="inner">
             <div class="content">
                 <header>
-                    <h2>Categories</h2>
+                    <div class="row">
+                        <div class="col">
+                            <h2>Categories</h2>
+                        </div>
+                        <div class="col-6"></div>
+                        <div class="col">
+                            <a href="/dashboard/categories/create">
+                                <button type="button" class="btn btn-primary">Create New Category</button>
+                            </a>
+
+                        </div>
+                    </div>
                 </header>
-                <div class="col-8" id="item">
+                <br><br>
+                <div id="category">
+
 
                     <!-- Main -->
                     <table class="table">
@@ -26,21 +72,27 @@
                                 <td>{{$category->name}}</td>
                                 <td>{{$category->disc}}</td>
                                 <td class="td">
-                                    <div class="btn-group btn-group-sm">
-                                        <a href="/dashboard/categories/{{ $category->id  }}/edit">
-                                            <button class="btn btn-primary">&nbsp; edit &nbsp;</button>
-                                        </a>
-                                        <form action="/dashboard/categories/{{ $category->id }}" method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn btn-warning text-white">delete</button>
-                                        </form>
+
+                                    {{--Todo:change size of button from main css--}}
+
+                                    <div class="row">
+                                        <div class="col-12 col-md-5 col-lg-3">
+                                            <a href="/dashboard/categories/{{ $category->id  }}/edit">
+                                                <button class="btn btn-primary">&nbsp; edit &nbsp;</button>
+                                            </a>
+                                        </div>
+                                        <div class="col-12 col-md-5 col-lg-3">
+                                            <form action="/dashboard/categories/{{ $category->id }}" method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn btn-warning text-white">delete</button>
+                                            </form>
+                                        </div>
                                     </div>
 
                                 </td>
                             </tr>
                         @endforeach
-                        <a href="/dashboard/categories/create"> <button type="button" class="btn btn-primary">Create</button></a>
                         </tbody>
                     </table>
                 </div>

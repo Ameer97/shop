@@ -1,6 +1,37 @@
 @extends('layouts.home')
 @section('home')
 
+    <style>
+        /*this part for table mobile mode that can't add in external file (responsiveTable) or if can should duplicate many files of css*/
+        @media only screen and (max-width: 760px),
+        (min-device-width: 768px) and (max-device-width: 1024px) {
+
+            td:nth-of-type(1):before {
+                content: "Name";
+            }
+
+            td:nth-of-type(2):before {
+                content: "Price";
+            }
+
+            td:nth-of-type(3):before {
+                content: "Quantity";
+            }
+
+            td:nth-of-type(4):before {
+                content: "Category";
+            }
+
+            td:nth-of-type(5):before {
+                content: "Decryption";
+            }
+
+        }
+
+
+    </style>
+
+
     <div id="user">
 
         <!-- Nav -->
@@ -19,6 +50,7 @@
 
         </div>
 
+
         <!-- Main -->
         <section id="main" class="wrapper">
             <div class="inner">
@@ -26,20 +58,27 @@
                     <header>
                         <h2>items</h2>
                     </header>
-                    <div class="col-8" id="item">
-                        <div class="row justify-content-between">
-
-
-                        </div>
-                        {{--action="/order/create/new--}}
+                    <div id="item">
                         <form action="/user/cart" method="post">
                             @csrf
 
-                            <input placeholder="Search here" type="text" v-model="search">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12 col-md-9 col-lg-10">
+                                        <input placeholder="Search here" type="text" v-model="search">
+                                    </div>
+                                    <div class="col-12 col-md-3 col-lg-2">
+                                        <button class="icon fa-cart-arrow-down" type="submit" value="Submit">Add to
+                                            Cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
 
-                            <button class="btn btn-primary icon fa-cart-arrow-down" type="submit" value="Submit">Add to Cart</button>
+
                             <br><br>
                             <table class="table">
+
                                 <thead>
                                 <tr>
                                     <th>Name</th>
@@ -53,7 +92,7 @@
 
                                 <tr>
                                     <td>@{{ item.name }}</td>
-                                    <td>@{{ item.price }} $</td>
+                                    <td>@{{ item.price }}$</td>
 
 
                                     <td>
@@ -100,6 +139,7 @@
                 users: [],
                 loggedInUser: "{{ \Illuminate\Support\Facades\Auth::user()->name }}",
                 search: "",
+
             },
             methods: {
                 getItems() {
@@ -112,11 +152,7 @@
                     });
 
                 },
-                sortArrays(arrays) {
-                    return _.orderBy(arrays, 'price', 'asc');
-                },
             },
-
 
             mounted() {
                 this.getItems();
@@ -131,13 +167,9 @@
                 sortedAppointments() {
                     return this.filteredList.slice().sort(function (a, b) {
                         return b.price - a.price;
-
-
                     })
                 },
             }
-
-
         });
     </script>
 @endsection
