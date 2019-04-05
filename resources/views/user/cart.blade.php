@@ -29,7 +29,7 @@
                     <header>
                         <h2>Cart</h2>
                     </header>
-                    <div class="col-8" id="item">
+                    <div id="item">
                         <div class="row justify-content-center">
 
                             <div class="wrapper">
